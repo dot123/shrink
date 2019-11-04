@@ -1,3 +1,11 @@
+/*
+ * @Author: conjurer
+ * @Github: https://github.com/dot123
+ * @Date: 2019-11-04 10:10:02
+ * @LastEditors: conjurer
+ * @LastEditTime: 2019-11-04 16:28:45
+ * @Description:
+ */
 import RuleData from "./RuleData";
 
 const { ccclass, property } = cc._decorator;
@@ -40,7 +48,7 @@ export default class Helloworld extends cc.Component {
 
     private isEnd: boolean = false;
 
-    private with: number = 0;
+    private width: number = 0;
     private height: number = 0;
     private offsetY: number = 0;
 
@@ -76,7 +84,7 @@ export default class Helloworld extends cc.Component {
             this.bottomNode.y -= this.bottomSpeed;
             this.topNode.y -= this.topSpeed;
 
-            this.with = this.rightNode.x - this.leftNode.x;
+            this.width = this.rightNode.x - this.leftNode.x;
             this.height = this.topNode.y - this.bottomNode.y;
 
             this.leftNode.height = this.height;
@@ -140,7 +148,7 @@ export default class Helloworld extends cc.Component {
     }
 
     private Setup() {
-        this.with = this.targetNode.width;
+        this.width = this.targetNode.width;
         this.height = this.targetNode.height;
 
         this.count++;
@@ -160,6 +168,11 @@ export default class Helloworld extends cc.Component {
 
     public GetRect() {
         let pos = this.targetNode.position;
-        return new cc.Rect(pos.x, pos.y, this.with, this.height);
+        pos = this.targetNode.parent.convertToWorldSpaceAR(pos);
+        let w = this.width;
+        let h = this.height;
+
+        let rect = new cc.Rect(pos.x - w * 0.5, pos.y - h * 0.5, w, h);
+        return rect;
     }
 }

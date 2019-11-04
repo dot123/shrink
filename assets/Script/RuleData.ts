@@ -1,3 +1,11 @@
+/*
+ * @Author: conjurer
+ * @Github: https://github.com/dot123
+ * @Date: 2019-11-04 10:10:02
+ * @LastEditors: conjurer
+ * @LastEditTime: 2019-11-04 16:28:28
+ * @Description:
+ */
 const RuleData = {
     1: {
         staticTime: 300,
