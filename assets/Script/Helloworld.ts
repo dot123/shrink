@@ -84,13 +84,14 @@ export default class Helloworld extends cc.Component {
             this.bottomNode.y -= this.bottomSpeed;
             this.topNode.y -= this.topSpeed;
 
-            this.width = this.rightNode.x - this.leftNode.x;
             this.height = this.topNode.y - this.bottomNode.y;
 
             this.leftNode.height = this.height;
             this.leftNode.y += this.offsetY;
             this.rightNode.height = this.height;
             this.rightNode.y += this.offsetY;
+
+            this.width = this.rightNode.x - this.leftNode.x;
 
             this.timeCount++;
 
@@ -167,7 +168,7 @@ export default class Helloworld extends cc.Component {
     }
 
     public GetRect() {
-        let pos = this.targetNode.position;
+        let pos = cc.v2(this.leftNode.x + this.width / 2, this.bottomNode.y + this.height / 2);
         pos = this.targetNode.parent.convertToWorldSpaceAR(pos);
         let w = this.width;
         let h = this.height;
